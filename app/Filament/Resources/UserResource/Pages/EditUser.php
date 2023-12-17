@@ -14,12 +14,6 @@ class EditUser extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\Action::make('Test arguments')
-                    ->arguments(['argument-1' => 'XXX'])
-                    ->action(function (array $arguments): array {
-                        dd($arguments);
-                        return $arguments;
-                    })
         ];
     }
 }
