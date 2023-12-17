@@ -37,12 +37,24 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\Action::make('Test arguments')
-                    ->arguments(['argument-1' => 'XXX'])
-                    ->action(function (array $arguments): array {
-                        dd($arguments);
-                        return $arguments;
-                    })
+                Tables\Actions\Action::make('Test 1')
+                    ->requiresConfirmation()
+                    ->modalDescription('Modified description')
+                    ->action(function (): array {
+                        return [];
+                    }),
+                Tables\Actions\Action::make('Test 2')
+                    ->requiresConfirmation()
+                    ->modalDescription(false)
+                    ->action(function (): array {
+                        return [];
+                    }),
+                Tables\Actions\Action::make('Test 3')
+                    ->requiresConfirmation()
+                    ->modalDescription(' ')
+                    ->action(function (): array {
+                        return [];
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
