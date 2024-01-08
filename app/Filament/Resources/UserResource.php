@@ -14,6 +14,7 @@ use Filament\Forms\Components\Wizard;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Support\RawJs;
 
 class UserResource extends Resource
 {
@@ -25,7 +26,10 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                
+                TextInput::make('amount')
+                    ->mask(RawJs::make('$money($input)'))
+                    ->stripCharacters(',')
+                    ->numeric()
             ]);
     }
 
